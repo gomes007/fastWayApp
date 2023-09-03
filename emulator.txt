@@ -1,0 +1,8 @@
+C:\Users\Paulo\AppData\Local\Android\Sdk\emulator>emulator -list-avds
+phone
+
+C:\Users\Paulo\AppData\Local\Android\Sdk\emulator>emulator -avd phone
+
+
+
+
