@@ -1,26 +1,29 @@
-import React from 'react';
-import {Button, StyleSheet, Text, View} from 'react-native';
+import React, {useEffect} from 'react';
+import {StyleSheet, Text, View} from 'react-native';
+import {useAuth} from "../services/AuthContext";
 import {useNavigation} from "@react-navigation/native";
-import AuthService from "../services/authService";
 
 const WelcomeScreen = () => {
 
+    const {isAuthenticated} = useAuth();
     const navigation = useNavigation();
 
-    const handleLogout = async () => {
-        try {
-            await AuthService.logout();
-            navigation.navigate('Login');
-        } catch (error) {
-            console.log('Erro ao deslogar:', error);
+    useEffect(() => {
+        console.log('Checking authentication', isAuthenticated);
+        if (!isAuthenticated) {
+            navigation.reset({
+                index: 0,
+                routes: [{ name: 'Login' }],
+            });
         }
-    };
+    }, [isAuthenticated]);
 
 
     return (
         <View style={styles.container}>
+
             <Text style={styles.text}>Bem-vindo!</Text>
-            <Button title="Deslogar" onPress={handleLogout} />
+
         </View>
     );
 };

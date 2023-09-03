@@ -1,11 +1,23 @@
-import React, { useState } from 'react';
-import { View, Text, Button, TextInput, StyleSheet, Alert } from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
 import AuthService from '../services/authService';
+import {useAuth} from '../services/AuthContext';
 
 const LoginScreen = ({ navigation }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+
+    const { isAuthenticated, setIsAuthenticated } = useAuth();
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigation.reset({
+                index: 0,
+                routes: [{ name: 'Welcome' }],
+            });
+        }
+    }, [isAuthenticated]);
 
     const handleLogin = async () => {
 
@@ -18,6 +30,8 @@ const LoginScreen = ({ navigation }) => {
             console.log("API Response: ", response);
 
             if (response.token) {
+                setIsAuthenticated(true);
+                console.log('User authenticated');
                 navigation.navigate('Welcome');
             } else {
                 setErrorMessage('Erro ao efetuar login. Por favor, tente novamente.');
@@ -28,6 +42,7 @@ const LoginScreen = ({ navigation }) => {
 
             setErrorMessage('Erro ao efetuar login. Por favor, tente novamente.');
         }
+
     };
 
     return (
