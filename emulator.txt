@@ -9,21 +9,17 @@ admin@admin.com
 
 
 
-<View style={styles.container}>
-            <Text style={styles.headerText}>Login</Text>
-            <TextInput
-                style={styles.input}
-                placeholder="Insira o email"
-                value={email}
-                onChangeText={(text) => setEmail(text)}
-            />
-            <TextInput
-                style={styles.input}
-                placeholder="Senha"
-                secureTextEntry={true}
-                value={password}
-                onChangeText={(text) => setPassword(text)}
-            />
-            {errorMessage ? <Text style={styles.errorText}>{errorMessage}</Text> : null}
-            <Button title="Entrar" onPress={handleLogin} />
-        </View>
+
+    container: {
+        height: 60,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        backgroundColor: '#F6F6F6',
+        paddingHorizontal: 5,
+        borderWidth: 1,
+        borderColor: '#E8E8E8',
+        borderRadius: 8,
+        zIndex: 1,
+        width: '100%',
+    },

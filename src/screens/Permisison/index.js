@@ -39,7 +39,7 @@ export default function Permission() {
             <View style={styles.inputContent}>
                 <View style={styles.nomeInput}>
                     <Input
-                        placeholder="Permission Name"
+                        label="Permission Name"
                         name='name'
                         autoCapitalize='none'
                         isPassword={false}

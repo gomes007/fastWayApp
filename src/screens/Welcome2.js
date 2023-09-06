@@ -4,15 +4,6 @@ import AuthService from "../services/authService";
 
 const Welcome2 = ({ navigation }) => {
 
-    const handleLogout = async () => {
-        try {
-            await AuthService.logout();
-            navigation.navigate('Login');
-        } catch (error) {
-            console.log('Erro ao deslogar:', error);
-        }
-    };
-
 
     return (
         <View style={styles.container}>

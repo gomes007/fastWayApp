@@ -65,7 +65,7 @@ const SignIn = ({ navigation }) => {
             <View style={styles.inputContent}>
                 <View style={styles.firstInput}>
                     <Input
-                        placeholder="Email"
+                        label="Email"
                         keyboardType="email-address"
                         autoCapitalize="none"
                         autoCorrect={false}
@@ -75,7 +75,7 @@ const SignIn = ({ navigation }) => {
                     />
                 </View>
                     <Input
-                        placeholder="Password"
+                        label="Password"
                         keyboardType="default"
                         secureTextEntry={showPassword}
                         showPassword={showPassword}

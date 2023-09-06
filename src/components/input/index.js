@@ -1,15 +1,25 @@
-import {Text, TextInput, TouchableOpacity, View} from "react-native";
-import styles from './styles'
-import FeatherIcon from 'react-native-vector-icons/Feather'
+import React from 'react';
+import { TextInput, TouchableOpacity, View } from 'react-native';
+import FeatherIcon from 'react-native-vector-icons/Feather';
+import { CustomFieldset } from '../CustomFieldset';
+import styles from './styles';
 
-export function Input({label, isPassword, onPress, showPassword, ...rest}) {
-
+export function Input({ label, isPassword, onPress, showPassword, onChangeText, editable = true, ...rest }) {
     return (
-        <View>
-
+        <CustomFieldset label={label}>
             <View style={styles.container}>
                 <TextInput
                     {...rest}
+                    editable={editable}
+                    onChangeText={(value) => {
+                        if (onChangeText) {
+                            if (onChangeText.length === 1) {
+                                onChangeText(value);
+                            } else {
+                                onChangeText(rest.name, value);
+                            }
+                        }
+                    }}
                     style={styles.textInput}
                 />
                 {
@@ -19,8 +29,6 @@ export function Input({label, isPassword, onPress, showPassword, ...rest}) {
                     </TouchableOpacity>
                 }
             </View>
-        </View>
-    )
+        </CustomFieldset>
+    );
 }
-
-//usar {...rest} quando as propriedades sao reconhecidas pelo componente TextInput caso contrario usa props.
