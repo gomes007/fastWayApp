@@ -5,6 +5,7 @@ import {useNavigation} from "@react-navigation/native";
 
 const WelcomeScreen = () => {
 
+    /*
     const {isAuthenticated} = useAuth();
     const navigation = useNavigation();
 
@@ -17,6 +18,8 @@ const WelcomeScreen = () => {
             });
         }
     }, [isAuthenticated]);
+
+     */
 
 
     return (
